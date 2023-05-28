@@ -218,6 +218,11 @@ def contact():
         phone = request.form['phone']
         email = request.form['email']
         send_mail(username, message, phone, email)
+        console.log()
+        console.log()
+        console.log()
+        console.log()
+        console.log("Test run")
         return render_template('contact.html', msg_sent=True, logged_in=current_user.is_authenticated)
 
 
