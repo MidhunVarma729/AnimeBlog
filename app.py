@@ -22,10 +22,13 @@ to_mail = os.getenv('TO_MAIL')
 def send_mail(username, message, phone, email):
     message = f'Subject: New message from your blog\n\nUsername: {username}\nPhone: {phone}\nMessage: {message}\nE-mail:{email}'.encode(
         'utf-8', 'ignore').decode('utf-8')
-    with smtplib.SMTP('smtp.gmail.com') as connection:
-        connection.starttls()
-        connection.login(my_mail, my_password)
-        connection.sendmail(from_addr=my_mail, to_addrs=to_mail, msg=message)
+    smtpserver = smtplib.SMTP("smtp.mail.yahoo.com")
+    smtpserver.connect("smtp.mail.yahoo.com")
+    smtpserver.ehlo()
+    smtpserver.starttls()
+    smtpserver.ehlo()
+    smtpserver.login(my_mail, my_password)
+    smtpserver.sendmail(my_mail, to_mail, message)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
