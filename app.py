@@ -22,7 +22,7 @@ to_mail = os.getenv('TO_MAIL')
 def send_mail(username, message, phone, email):
     message = f'Subject: New message from your blog\n\nUsername: {username}\nPhone: {phone}\nMessage: {message}\nE-mail:{email}'.encode(
         'utf-8', 'ignore').decode('utf-8')
-    with smtplib.SMTP('smtp.mail.yahoo.com') as connection:
+    with smtplib.SMTP('smtp.gmail.com') as connection:
         connection.starttls()
         connection.login(my_mail, my_password)
         connection.sendmail(from_addr=my_mail, to_addrs=to_mail, msg=message)
